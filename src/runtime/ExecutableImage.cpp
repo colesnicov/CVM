@@ -226,7 +226,11 @@ WORD ExecutableImage::printMnemomic(WORD address) {
 		//------------------------------------------------------------------------
 		// PROCEDURE CALL OPERATIONS
 		//------------------------------------------------------------------------
-		case OP_CALL:   cout << "call    [" << image[ip++] << "], " << image[ip++]; break;
+		case OP_CALL:   cout << "call    [" << image[ip++] << "], ";
+			if(image.size() > ip){
+				cout << image[ip++];
+			}
+		break;
 		case OP_RET:    cout << "ret     "; break;
 		case OP_SYSCALL:cout << "syscall 0x" << setbase(16) << image[ip++] << setbase(10); break;
 		case OP_HALT: 	cout << "---- halt ----"; break;
